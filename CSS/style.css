@@ -1,0 +1,897 @@
+/* ------------------------------------- General Style -------------------------------------------------- */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "PT Sans" , sans-serif;
+    scroll-behavior: smooth;
+    padding-top : 100px;
+}
+
+:root{
+    --mainColor: #7B5244;
+    --subColor: #333;
+}
+
+.container{
+    width: 85%;
+    margin: auto;
+}
+
+.list-unstyled{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Common Section */
+.section-padding{
+    padding-top: 70px;
+}
+
+.section-header{ 
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-title{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.line{
+    display: block;
+    width: 100px;
+    height: 2px;
+    margin: auto;
+    background-color: var(--mainColor);
+    transition: width 0.5s;
+}
+
+.section-header:hover .line{
+    width: 150px;
+}
+
+/* ------------------------------------------ Header ----------------------------------------------------- */
+
+header{
+    padding: 30px 0;
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    background-color: #FFF;
+    z-index: 999;
+    top: 0;
+}
+
+/* .gap{
+    width: 100%;
+    height: 100px;
+    background-color: #FFF;
+} */
+
+header .header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content img{
+    flex: 1;
+    max-width: 130px;
+}
+
+.header-content nav{
+    flex: 3;
+    text-align: center;
+}
+
+.header-content .login{
+    flex: 1;
+    text-align: right;
+}
+
+.header-content ul li{
+    display: inline-block;
+}
+
+.header-content ul li , .header-content ul li a{
+    color: var(--subColor);
+}
+
+.header-content nav ul li .link-item{
+    display: block;
+    padding: 10px 23px;
+    font-weight: 600;
+    position:relative;
+}
+
+
+.header-content nav ul li .link-item::before{
+    content: "";
+    position: absolute;
+    border-width: 0 2px;
+    border-style: solid;
+    border-color: var(--mainColor);
+    width: 98%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s;
+    transform: scale3d(1,0,1);
+}
+
+.header-content nav ul li .link-item:hover:before{
+    transform: scale3d(1,1,1);
+}
+
+.header-content nav ul li .link-item::after{
+    content: "";
+    position: absolute;
+    border-width: 2px 0;
+    border-style: solid;
+    border-color: var(--mainColor);
+    width: 100%;
+    height: 91%;
+    top: 0;
+    left: 0;
+    transition: transform 0.2s;
+    transform: scale3d(0,1,1);
+    transform-origin: left;
+}
+
+.header-content nav ul li .link-item:hover::after{
+    transform: scale3d(1,1,1);
+    transition-delay: 0.3s;
+}
+
+.header-content .login ul li{
+    padding: 10px;
+    font-weight: 700;
+}
+
+.header-content .login ul li:last-child i{
+    position: relative;
+    margin-right: 10px;
+}
+
+.header-content .login ul li:last-child i:after{
+    position: absolute;
+    content: "0";
+    background-color: var(--mainColor);
+    font-size: 11px;
+    color: #FFF;
+    padding: 4px;
+    border-radius: 50%;
+    right: -6px;
+    top: 10px;
+}
+
+.dropdown1{
+    position: relative;
+}
+
+.dropdown-menue1{
+    position: absolute;
+    width: 400px;
+    padding: 25px;
+    margin-top: 10px;
+    border: 2px solid var(--mainColor);
+    background-color: #FFF;
+    text-align: left;
+    line-height: 1.9;
+    display: flex;
+    justify-content: space-between;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.4s , visibility 0.4s , opacity 0.4s;
+}
+
+.dropdown1:hover .dropdown-menue1{
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown-menue1 ul{
+    display: table-cell;
+}
+
+.dropdown1-title{
+    color: var(--mainColor);
+}
+
+.dropdown-hr{
+    width: 90px;
+    border-style:solid;
+    border-color: #f4f0f0;
+    margin-bottom: 10px;
+}
+
+.dropdown2 , .dropdown3{
+    position: relative;
+}
+
+.dropdown-menue2 , .dropdown-menue3{
+    position: absolute;
+    width: 200px;
+    padding: 25px;
+    margin-top: 10px;
+    border: 2px solid var(--mainColor);
+    background-color: #FFF;
+    text-align: left;
+    line-height: 1.7;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.4s , visibility 0.4s , opacity 0.4s;
+}
+
+.dropdown2:hover .dropdown-menue2 , .dropdown3:hover .dropdown-menue3{
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown-menue2 ul{
+    display: table-cell;
+}
+
+/* ------------------------------------------ Slider Section ---------------------------------------------- */
+
+section.slider img{
+    width: 100%;
+    position: relative;
+    z-index: -1;
+}
+
+section.slider .bullets{
+    position: absolute;
+    width: 40px;
+    display: flex;
+    flex-direction: row;
+    left: 50%;
+    bottom: 70px;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.3s , visibility 0.3s , opacity 0.3s;
+}
+
+section.slider:hover .bullets{
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+
+.bullets span{
+    width: 10px;
+    height: 10px;
+    background-color: var(--subColor);
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: transform 0.4s, background-color 0.4s;
+}
+
+.bullets span:hover{
+    background-color: var(--mainColor);
+    transform: scale(1.5);
+}
+
+/* -------------------------------------- Category Section ------------------------------------------------- */
+
+.category-items{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 20px;
+}
+
+.category-item{
+    position: relative;
+}
+
+.category-item img{
+    width: 100%;
+    margin-bottom: 25px;
+    transition: box-shadow 0.5s;
+}
+
+.category-item:hover .banner{
+    box-shadow: 1px 1px 20px 1px #bbbbbb;
+}
+
+.category-item-subtitle{
+    color: gray;
+    font-weight: normal;
+}
+
+.category-item .icon{
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: var(--mainColor);
+    color: #FFF;
+    text-align: center;
+    line-height: 30px;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.category-item:hover .icon{
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ------------------------------------------ Discount Section --------------------------------------------- */
+
+.discount{
+    margin: 70px 0 50px;
+    display: flex;
+}
+
+.discount-desc{
+    flex: 2;
+    background-color: #F7F3EF;
+    padding: 20px;
+    position: relative;
+}
+
+.discount-desc .top{
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 20px;
+}
+
+.discount-desc .top .icon{
+    position: absolute;
+    font-size: 50px;
+    color: var(--mainColor);
+    top: 10px;
+    left: 0;
+}
+
+.discount-desc .top + p{
+    line-height: 1.9;
+    color: gray;
+}
+
+.discount-subtitle{
+    color: gray;
+    font-size: 15px;
+}
+
+.discount-desc .lines{
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.discount-desc .lines span{
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--mainColor);
+    margin-left: 10px;
+}
+
+.discount-item{
+    flex: 1;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.discount-item img{
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.discount-item:hover img{
+    transform: scale(1.1);
+}
+
+.discount-item .discount-item-info{
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+
+.discount-item-info h3{
+    font-weight: normal;
+    color: var(--mainColor);
+}
+
+.discount-item-info h2{
+    font-size: 20px;
+}
+
+.discount-item:nth-child(2){
+    margin: 0 20px;
+}
+
+/* ---------------------------------------- Sprites Section ----------------------------------------------- */
+
+.sprites{
+    margin-bottom: 65px;
+    display: flex;
+}
+
+.sprite-item{
+    flex: 1;
+    text-align: center;
+    border-right: 2px solid #F4F0F0;
+}
+
+.sprite-item:last-child{
+    border-right:0;
+}
+
+.sprite-item h3{
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.sprite-item span{
+    font-size: 15px;
+    color: gray;
+}
+
+.sprite-icon{
+    height: 55px;
+    background-image: url(../images/service-icon.png);
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+}
+
+.sprite-icon-1{
+    background-position: center 5px;
+    transition: background-position 0.4s;
+}
+
+.sprite-item:hover .sprite-icon-1{
+    background-position: center -89px;
+}
+
+.sprite-icon-2{
+    background-position: center -180px;
+    transition: background-position 0.4s;
+}
+
+.sprite-item:hover .sprite-icon-2{
+    background-position: center -272px;
+}
+
+.sprite-icon-3{
+    background-position: center -363px;
+    transition: background-position 0.4s;
+}
+
+.sprite-item:hover .sprite-icon-3{
+    background-position: center -457px;
+}
+
+.sprite-icon-4{
+    background-position: center -546px;
+    transition: background-position 0.4s;
+}
+
+.sprite-item:hover .sprite-icon-4{
+    background-position: center -640px;
+}
+
+.sprite-icon-5{
+    background-position: center -732px;
+    transition: background-position 0.4s;
+}
+
+.sprite-item:hover .sprite-icon-5{
+    background-position: center -825px;
+}
+
+.sprites-hr{
+    width: 100%;
+    border-style:solid;
+    border-color: #f4f0f0;
+}
+
+/* ------------------------------------- Products Section ------------------------------------------------- */
+
+.products{
+    margin-bottom: 40px;
+}
+
+.list-products{
+    display: flex;
+    justify-content: center;
+}
+
+.list-products li{
+    margin: 10px 20px 40px 20px;
+}
+
+.list-products li a{
+    font-weight: 600;
+    color: #333;
+    transition: color 0.5;
+}
+
+.list-products li a:hover{
+    color: var(--mainColor);
+}
+
+.products-items{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+}
+
+.product-img{
+    position: relative;
+}
+
+.product-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: transform 0.4s , visibility 0.4s , opacity 0.4s;
+}
+
+.product-item:hover .product-overlay{
+    visibility: visible;
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.product-overlay ul{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%)
+}
+
+.product-overlay ul li{
+    width: 40px;
+    height: 40px;
+    background-color: var(--mainColor);
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+.product-overlay ul li i{
+    color: #FFF;
+    line-height: 40px;
+}
+
+.product-item i.active{
+    color: gold;
+}
+
+.product-info span {
+    display: block;
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+/* ---------------------------------------- Blog Section -------------------------------------------------- */
+
+.blog-content{
+    display: flex;
+    margin-bottom: 45px;
+}
+
+.blog-img{
+    position: relative;
+    flex: 1;
+    margin-right: 25px;
+}
+
+.blog-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.blog-desc{
+    position: relative;
+    flex: 2;
+    padding: 25px;
+    background-color: #F7F3EF;
+}
+
+.blog-desc .blog-top{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.blog-desc .blog-top h1{
+    color: var(--mainColor);
+    font-size: 50px;
+}
+
+.blog-desc .blog-top h5{
+    color: var(--mainColor);
+    font-size: 15px;
+}
+
+.blog-desc .blog-top span{
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    top: 20px;
+    left: 100px;
+}
+
+.blog-desc .blog-top + p{
+    color: gray;
+    line-height: 1.8;
+}
+
+.blog-desc .lines{
+    position: absolute;
+    text-align: right;
+    bottom: 20px;
+    right: 20px;
+}
+
+.blog-desc .lines span{
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--mainColor);
+    margin-left: 10px;
+}
+
+.blog-img .icon-placeholder{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--mainColor);
+    border-radius: 50%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.blog-img .icon-placeholder i{
+    color: var(--mainColor);
+    line-height: 60px;
+    font-size: 30px;
+}
+
+/* ------------------------------------------- Blog Icons --------------------------------------------------*/
+
+.blog-icons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 45px;
+}
+
+.blog-icons .bg-icons img{
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.blog-icons .bg-icons:hover img{
+    opacity: 1;
+}
+
+/* -------------------------------------------- Footer --------------------------------------------------- */
+
+footer{
+    background-color: #000;
+    padding-top: 90px;
+}
+
+.footer-content{
+    display: flex;
+}
+
+.footer-desc{
+    flex: 1.5;
+    margin-right: 60px;
+}
+
+.footer-info{
+    flex: 1;
+    margin-right: 60px;
+}
+
+.footer-account{
+    flex: 1;
+    margin-right: 60px;
+}
+
+.footer-sub{
+    flex: 1;
+    margin-right: 60px;
+}
+
+.footer-desc .footer-logo{
+   margin-bottom: 35px;
+}
+
+.footer-desc p{
+    color: gray;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.footer-desc .footer-download a{ 
+    margin-right: 18px;
+}
+
+.footer-desc .footer-download a img{
+    width: 130px;
+}
+
+.footer-info .info-title{
+    font-size: 25px;
+    color: #FFF;
+    margin-bottom: 35px;
+}
+
+.footer-info ul li{
+    margin-bottom: 15px;
+    transition: margin-left 0.2s;
+}
+
+.footer-info ul li a{
+    font-size: 16px;
+    color: gray;
+    transition: color 0.2s;
+}
+
+.footer-info ul li:hover a{
+    color: #FFF;
+}
+
+.footer-info ul li:hover{
+    margin-left: 6px;
+}
+
+.footer-account .account-title{
+    font-size: 25px;
+    color: #FFF;
+    margin-bottom: 35px;
+}
+
+.footer-account ul li{
+    margin-bottom: 15px;
+    transition: margin-left 0.2s;
+}
+
+.footer-account ul li a{
+    font-size: 16px;
+    color: gray;
+    transition: color 0.2s;
+}
+
+.footer-account ul li:hover a{
+    color: #FFF;
+}
+
+.footer-account ul li:hover{
+    margin-left: 6px;
+}
+
+.footer-sub .subscription-title{
+    font-size: 25px;
+    color: #FFF;
+    margin-bottom: 60px;
+}
+
+.footer-sub .footer-form{
+    position: relative;
+}
+
+.footer-sub .footer-form input{
+    width: 100%;
+    height: 30px;
+    font-size: 17px;
+    padding: 10px 10px 10px 3px;
+    background-color: #000;
+    color: #FFF;
+    border: none;
+}
+
+.footer-sub .footer-form input::placeholder{
+    font-size: 15px;
+    color: gray;
+}
+
+.footer-sub .footer-form input:focus{
+    outline: none;
+}
+
+.footer-sub .footer-form a{
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    right: -14px;
+    top: -6px;
+}
+
+.footer-sub .footer-form a i{
+    color: #FFF;
+    font-size: 25px;
+    line-height: 40px;
+    transition: color 0.4s;
+}
+
+.footer-sub .footer-form a:hover i{
+    color: var(--mainColor);
+}
+
+.footer-sub .footer-form .line{
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    margin-top: 5px;
+}
+
+.footer-sub .contact-icons{
+    margin-top: 70px;
+}
+
+.footer-sub .contact-icons a{
+    display: inline-block;
+    width: 26px;
+    height: 30px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.footer-sub .contact-icons a i{
+    color: gray;
+    line-height: 30px;
+    font-size: 20px;
+    transition: color 0.2s;
+}
+
+.footer-sub .contact-icons a i:hover{
+    color: #FFF;
+}
+
+.footer-hr{
+    margin-top: 80px;
+    width: 100%;
+    height:1px;
+    border-style: solid;
+    border-color: gray;
+}
+
+footer .footer-bottom{
+    padding: 15px 0;
+    text-align: center;
+}
+
+footer .footer-bottom p{
+    color: gray;
+    font: 16px;
+}
+
+footer .footer-bottom p span{
+    color: var(--mainColor);
+}
